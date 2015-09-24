@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MemoryFind" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9JA-98-RKV">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="74"/>
+                                <items>
+                                    <navigationItem title="Memory" prompt=" " id="rdj-Rk-sWI"/>
+                                </items>
+                            </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Witaj w grze Memory!" textAlignment="center" lineBreakMode="clip" baselineAdjustment="alignBaselines" highlighted="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XMu-26-3HG">
+                                <rect key="frame" x="0.0" y="74" width="414" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="KKb-To-YCh"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wybierz poziom trudności:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fzR-ft-0O9">
+                                <rect key="frame" x="20" y="153" width="374" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fZb-pV-Ti3">
+                                <rect key="frame" x="20" y="186" width="374" height="48"/>
+                                <state key="normal" title="Łatwy"/>
+                                <connections>
+                                    <action selector="btnEasyClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="78u-Q0-4dQ"/>
+                                    <segue destination="XAb-5N-7Kh" kind="show" id="iOl-bX-jBg"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R1D-bg-i6f">
+                                <rect key="frame" x="20" y="242" width="374" height="48"/>
+                                <state key="normal" title="Trudny"/>
+                                <connections>
+                                    <action selector="btnHardClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="03v-9x-f0W"/>
+                                    <segue destination="XAb-5N-7Kh" kind="show" id="ZDs-PH-ULK"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rDp-Ki-YTN">
+                                <rect key="frame" x="20" y="686" width="374" height="30"/>
+                                <state key="normal" title="O aplikacji"/>
+                                <connections>
+                                    <action selector="btnAboutClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Rga-7Z-Sa4"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="fzR-ft-0O9" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="2WU-64-hyp"/>
+                            <constraint firstItem="fZb-pV-Ti3" firstAttribute="top" secondItem="fzR-ft-0O9" secondAttribute="bottom" constant="12" id="6W9-CH-05F"/>
+                            <constraint firstItem="rDp-Ki-YTN" firstAttribute="trailing" secondItem="R1D-bg-i6f" secondAttribute="trailing" id="6he-q1-488"/>
+                            <constraint firstItem="9JA-98-RKV" firstAttribute="trailing" secondItem="XMu-26-3HG" secondAttribute="trailing" id="BbB-d0-3hU"/>
+                            <constraint firstItem="rDp-Ki-YTN" firstAttribute="leading" secondItem="R1D-bg-i6f" secondAttribute="leading" id="JLJ-Vk-aPk"/>
+                            <constraint firstItem="XMu-26-3HG" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Mog-cc-HKM"/>
+                            <constraint firstItem="R1D-bg-i6f" firstAttribute="trailing" secondItem="fZb-pV-Ti3" secondAttribute="trailing" id="N4G-EU-xX7"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="XMu-26-3HG" secondAttribute="bottom" constant="614" id="RM0-S8-YWK"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="R1D-bg-i6f" secondAttribute="bottom" constant="446" id="VWI-dA-2WE"/>
+                            <constraint firstItem="9JA-98-RKV" firstAttribute="bottom" secondItem="XMu-26-3HG" secondAttribute="top" id="WTk-R4-Zoq"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="fZb-pV-Ti3" secondAttribute="bottom" constant="502" id="X0m-3t-hYg"/>
+                            <constraint firstItem="9JA-98-RKV" firstAttribute="leading" secondItem="XMu-26-3HG" secondAttribute="leading" id="aau-s1-XUk"/>
+                            <constraint firstItem="fzR-ft-0O9" firstAttribute="centerX" secondItem="XMu-26-3HG" secondAttribute="centerX" id="fSL-sH-bfZ"/>
+                            <constraint firstAttribute="bottom" secondItem="rDp-Ki-YTN" secondAttribute="bottom" constant="20" symbolic="YES" id="gYf-Xo-87u"/>
+                            <constraint firstItem="fzR-ft-0O9" firstAttribute="top" secondItem="XMu-26-3HG" secondAttribute="bottom" constant="31" id="nqA-9C-Ev8"/>
+                            <constraint firstItem="fZb-pV-Ti3" firstAttribute="trailing" secondItem="fzR-ft-0O9" secondAttribute="trailing" id="qxS-9b-RNU"/>
+                            <constraint firstItem="fZb-pV-Ti3" firstAttribute="leading" secondItem="fzR-ft-0O9" secondAttribute="leading" id="sFP-tA-6ne"/>
+                            <constraint firstItem="R1D-bg-i6f" firstAttribute="leading" secondItem="fZb-pV-Ti3" secondAttribute="leading" id="wcH-7z-kCR"/>
+                            <constraint firstAttribute="trailing" secondItem="XMu-26-3HG" secondAttribute="trailing" id="xbX-f3-TnM"/>
+                            <constraint firstItem="R1D-bg-i6f" firstAttribute="top" secondItem="fZb-pV-Ti3" secondAttribute="bottom" constant="8" symbolic="YES" id="zNw-mM-fs4"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                    <connections>
+                        <outlet property="btnAbout" destination="rDp-Ki-YTN" id="Gqc-b3-MPL"/>
+                        <outlet property="btnEasy" destination="fZb-pV-Ti3" id="pBM-bq-yBm"/>
+                        <outlet property="btnHard" destination="R1D-bg-i6f" id="pnX-eE-3Zf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="325" y="494"/>
+        </scene>
+        <!--Game View Controller-->
+        <scene sceneID="rsb-zX-MZo">
+            <objects>
+                <viewController storyboardIdentifier="game" useStoryboardIdentifierAsRestorationIdentifier="YES" id="XAb-5N-7Kh" customClass="GameViewController" customModule="MemoryFind" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="IVJ-U6-GiX"/>
+                        <viewControllerLayoutGuide type="bottom" id="e6o-91-pUt"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="6nK-ck-1gd">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dqR-Yt-5iB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="900" y="494"/>
+        </scene>
+    </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="iOl-bX-jBg"/>
+    </inferredMetricsTieBreakers>
+</document>
