@@ -33,8 +33,11 @@ class GameViewController : UIViewController {
     var pairsDiscovered : CGFloat = 0
     var buttonSize: CGSize?
     
-    var button1Tag : Int = -1
-    var button2Tag : Int = -1
+    internal var button1Tag : Int = -1
+    internal var button2Tag : Int = -1
+    
+    internal var button1 : UIButton?
+    internal var button2 : UIButton?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,59 +65,59 @@ class GameViewController : UIViewController {
         // sender.setTitle(String.init(sender.tag), forState: UIControlState.Normal)
         if button1Tag == -1 {
             button1Tag = sender.tag
-            sender.setBackgroundImage(UIImage.init(named: String.init(shuffledGameField![sender.tag])), forState: UIControlState.Normal)
+            sender.setBackgroundImage(UIImage.init(named: String.init(shuffledGameField![sender.tag - 100])), forState: UIControlState.Normal)
             return
         }
         
         if(button2Tag == -1 && sender.tag != button1Tag) {
             button2Tag = sender.tag
-            sender.setBackgroundImage(UIImage.init(named: String.init(shuffledGameField![sender.tag])), forState: UIControlState.Normal)
-            
-            if shuffledGameField![button1Tag] === shuffledGameField![button2Tag] {
+            sender.setBackgroundImage(UIImage.init(named: String.init(shuffledGameField![sender.tag - 100])), forState: UIControlState.Normal)
+            if shuffledGameField![button1Tag - 100] === shuffledGameField![button2Tag - 100] {
                 print("TO SAMO")
                 
-                var button1 = self.view.viewWithTag(button1Tag) as? UIButton
-                button1!.enabled = false
-                button1!.backgroundColor = UIColor.grayColor()
-                
-                var button2 = self.view.viewWithTag(button2Tag) as? UIButton
-                button2!.enabled = false
-                button2!.backgroundColor = UIColor.grayColor()
-                
-                button1Tag = -1
-                button2Tag = -1
+                self.button1 = self.view.viewWithTag(button1Tag) as? UIButton
+
+                self.button2 = self.view.viewWithTag(button2Tag) as? UIButton
+
+                let time = dispatch_time(DISPATCH_TIME_NOW, 1 * Int64(NSEC_PER_SEC))
+                dispatch_after(time, dispatch_get_main_queue(),{
+                    self.button1!.enabled = false
+                    self.button1!.backgroundColor = UIColor.greenColor()
+                    self.button2!.enabled = false
+                    self.button2!.backgroundColor = UIColor.greenColor()
+                })
                 
                 ++pairsDiscovered
                 
                 if(pairsDiscovered == cardPairs) {
-                    let time = dispatch_time(DISPATCH_TIME_NOW, 1 * Int64(NSEC_PER_SEC))
-                    dispatch_after(time, dispatch_get_main_queue(), {
+                        NSThread.sleepForTimeInterval(1)
                         let alertController = UIAlertController(title: "Wygrana!", message: "Koniec gry, wszystie pary odkryte", preferredStyle: .Alert)
-                        let alertActon = UIAlertAction(title: "OK", style: .Default, handler: nil)
+                    let alertActon = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: alertHandler)
                         
                         alertController.addAction(alertActon)
                         
-                        self.presentViewController(alertController, animated: true, completion: nil)
-                        
-                        self.dismissViewControllerAnimated(true, completion: nil)
-                    })
+                    self.presentViewController(alertController, animated: true, completion:nil)
+                    
+                    
+
                 }
             } else {
+                    self.button1 = self.view.viewWithTag(button1Tag) as? UIButton
+                    self.button2 = self.view.viewWithTag(button2Tag) as? UIButton
                 
                 let time = dispatch_time(DISPATCH_TIME_NOW, 1 * Int64(NSEC_PER_SEC))
-                
-                dispatch_after(time, dispatch_get_main_queue(), {
-                    var button1 = self.view.viewWithTag(self.button1Tag) as? UIButton
-                    
-                    button1!.setBackgroundImage(UIImage.init(named: "Question"), forState: UIControlState.Normal)
-                
-                    var button2 = self.view.viewWithTag(self.button2Tag) as? UIButton
-                
-                    button2!.setBackgroundImage(UIImage.init(named: "Question"), forState: UIControlState.Normal)
+                dispatch_after(time, dispatch_get_main_queue(),{
+                    self.button1!.setBackgroundImage(UIImage.init(named: "Question"), forState: UIControlState.Normal)
+                    self.button2!.setBackgroundImage(UIImage.init(named: "Question"), forState: UIControlState.Normal)
                 })
             }
         }
-        
+        button1Tag = -1
+        button2Tag = -1
+    }
+    
+    func alertHandler(alert: UIAlertAction!) {
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     func fillAndShuffleGameField() -> Void {
@@ -155,7 +158,7 @@ class GameViewController : UIViewController {
                 gameBtn.layer.borderWidth = 1
                 gameBtn.layer.borderColor = UIColor.blackColor().CGColor
                 gameBtn.setBackgroundImage(UIImage.init(named: "Question"), forState: UIControlState.Normal)
-                gameBtn.tag = ((j * intGameCols) + i)
+                gameBtn.tag = 100 + ((j * intGameCols) + i)
                 gameBtn.setTitle(" ", forState: .Normal)
                 gameBtn.addTarget(self, action: "btnClick:", forControlEvents: .TouchDown)
                 
